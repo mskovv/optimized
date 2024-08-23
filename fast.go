@@ -11,12 +11,12 @@ import (
 )
 
 //func FastSearch(out io.Writer) {
-//	file, err := os.Open(filePath) //пробуем открыть файл
+//	file, err := os.Open(filePath)
 //	if err != nil {
 //		panic(err)
 //	}
 //
-//	fileContents, err := io.ReadAll(file) //пробуем читать все содержимое файла сразу (грузим все в МЕМ)
+//	fileContents, err := io.ReadAll(file)
 //	if err != nil {
 //		panic(err)
 //	}
@@ -44,99 +44,6 @@ import (
 //
 //	for i, user := range users {
 //
-//		isAndroid := false
-//		isMSIE := false
-//
-//		browsers, ok := user["browsers"].([]interface{})
-//		if !ok {
-//			// log.Println("cant cast browsers")
-//			continue
-//		}
-//
-//		for _, browserRaw := range browsers {
-//			browser, ok := browserRaw.(string)
-//			if !ok {
-//				// log.Println("cant cast browser to string")
-//				continue
-//			}
-//			if strings.Contains(browser, "Android") {
-//				isAndroid = true
-//				notSeenBefore := true
-//				for _, item := range seenBrowsers {
-//					if item == browser {
-//						notSeenBefore = false
-//					}
-//				}
-//				if notSeenBefore {
-//					seenBrowsers = append(seenBrowsers, browser)
-//					uniqueBrowsers++
-//				}
-//			} else if strings.Contains(browser, "MSIE") {
-//				isMSIE = true
-//				notSeenBefore := true
-//				for _, item := range seenBrowsers {
-//					if item == browser {
-//						notSeenBefore = false
-//					}
-//				}
-//				if notSeenBefore {
-//					seenBrowsers = append(seenBrowsers, browser)
-//					uniqueBrowsers++
-//				}
-//			}
-//		}
-//
-//		if !(isAndroid && isMSIE) {
-//			continue
-//		}
-//
-//		email := strings.ReplaceAll(user["email"].(string), "@", " [at] ")
-//		buf.WriteString(fmt.Sprintf("[%d] %s <%s>\n", i, user["name"], email))
-//	}
-//
-//	foundUsers = buf.String()
-//	_, err = fmt.Fprintln(out, "found users:\n"+foundUsers)
-//	if err != nil {
-//		return
-//	}
-//	_, err = fmt.Fprintln(out, "Total unique browsers", len(seenBrowsers))
-//	if err != nil {
-//		return
-//	}
-//}
-
-//func FastSearch(out io.Writer) {
-//	file, err := os.Open(filePath) // пробуем открыть файл
-//	if err != nil {
-//		panic(err)
-//	}
-//	defer file.Close() // закрываем файл после использования
-//
-//	fileContents, err := io.ReadAll(file)
-//	if err != nil {
-//		panic(err)
-//	}
-//
-//	var seenBrowsers []string
-//	uniqueBrowsers := 0
-//	foundUsers := ""
-//	buf := bytes.Buffer{}
-//
-//	users := make([]map[string]interface{}, 0, cap(fileContents)/4)
-//	decoder := json.NewDecoder(bytes.NewReader(fileContents))
-//	for {
-//		user := make(map[string]interface{})
-//		err := decoder.Decode(&user)
-//		if err != nil {
-//			if err == io.EOF {
-//				break
-//			}
-//			panic(err)
-//		}
-//		users = append(users, user)
-//	}
-//
-//	for i, user := range users {
 //		isAndroid := false
 //		isMSIE := false
 //
