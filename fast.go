@@ -11,11 +11,11 @@ import (
 )
 
 func FastSearch(out io.Writer) {
-	file, err := os.Open(filePath) // пробуем открыть файл
+	file, err := os.Open(filePath)
 	if err != nil {
 		panic(err)
 	}
-	defer file.Close() // закрываем файл после использования
+	defer file.Close()
 
 	fileContents, err := io.ReadAll(file)
 	if err != nil {
@@ -30,11 +30,9 @@ func FastSearch(out io.Writer) {
 	lines := strings.Split(string(fileContents), "\n")
 
 	users := make([]model.User, 0)
-	//users := make([]map[string]interface{}, 0)
 	for _, line := range lines {
 		user := model.User{}
 		// fmt.Printf("%v %v\n", err, line)
-		//err := json.Unmarshal([]byte(line), &user)
 		err := easyjson.Unmarshal([]byte(line), &user)
 		if err != nil {
 			if err == io.EOF {
